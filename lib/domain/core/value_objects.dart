@@ -2,14 +2,13 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../auth/email_address.dart';
+import '../auth/value_objects.dart';
+import 'failures.dart';
 
+@immutable
 abstract class ValueObject<T> {
   const ValueObject();
   Either<ValueFailure<T>, T> get value;
-
-  @override
-  String toString() => 'EmailAddress($value)';
 
   @override
   bool operator ==(Object other) {
@@ -20,4 +19,6 @@ abstract class ValueObject<T> {
 
   @override
   int get hashCode => value.hashCode;
+  @override
+  String toString() => 'Value($value)';
 }
